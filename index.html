@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>HalıSaha - Yoklama</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <img class="brand__logo" src="icons/icon-192.png" alt="" />
+      <div class="brand__text">
+        <div class="brand__title">HalıSaha</div>
+        <div class="brand__subtitle">geliyorum / gelemiyorum</div>
+      </div>
+    </div>
+    <button id="btnSignOut" class="ghost hidden" title="Çıkış">Çıkış</button>
+  </header>
+
+  <main class="wrap">
+    <!-- LOGIN -->
+    <section id="viewLogin" class="card">
+      <h1>Giriş / Kayıt</h1>
+      <p class="muted">Arkadaş grubu yoklaması. Kayıt olurken mevkini yaz, 14 kişi olunca takımlar otomatik oluşur.</p>
+
+      <div class="grid">
+        <label>
+          <span>E-posta</span>
+          <input id="email" type="email" placeholder="ornek@mail.com" autocomplete="email" />
+        </label>
+        <label>
+          <span>Şifre</span>
+          <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" />
+        </label>
+        <label>
+          <span>Takma ad</span>
+          <input id="nickname" type="text" placeholder="Furkan / Mali / Burhan..." autocomplete="nickname" />
+        </label>
+        <label>
+          <span>Mevki (1)</span>
+          <input id="pos1" type="text" placeholder="Örn: Kaleci / Stoper / Orta saha / Forvet" />
+        </label>
+        <label>
+          <span>Mevki (2) (opsiyonel)</span>
+          <input id="pos2" type="text" placeholder="Örn: Sağ bek / 10 numara / Kanat" />
+        </label>
+      </div>
+
+      <div class="row">
+        <button id="btnLogin" class="primary">Giriş yap</button>
+        <button id="btnSignup" class="secondary">Kayıt ol</button>
+      </div>
+
+      <div id="loginMsg" class="msg"></div>
+
+      <details class="mini">
+        <summary>Kurulum notu (ilk kez açıyorsan)</summary>
+        <p class="muted">
+          Bu proje Firebase ile çalışır. <code>app.js</code> içindeki <code>firebaseConfig</code> alanını doldurman gerekir.
+        </p>
+      </details>
+    </section>
+
+    <!-- MATCH -->
+    <section id="viewMatch" class="hidden">
+      <section class="card hero">
+        <div class="hero__left">
+          <h2 id="matchTitle">Bu Haftaki Maç</h2>
+          <div class="chips">
+            <span class="chip" id="matchWhen">⏱️ --</span>
+            <span class="chip" id="matchWhere">📍 —</span>
+          </div>
+          <p class="muted" id="helloUser"></p>
+        </div>
+
+        <div class="hero__right">
+          <button id="btnIn" class="big in">✅ Geliyorum</button>
+          <button id="btnOut" class="big out">❌ Gelemiyorum</button>
+          <div class="mini muted">Geliyorum sayısı 14 olunca takımlar otomatik çıkar.</div>
+        </div>
+      </section>
+
+      <section class="two">
+        <section class="card list">
+          <div class="list__head">
+            <h3>✅ Gelenler</h3>
+            <span id="countIn" class="badge">0</span>
+          </div>
+          <ul id="listIn"></ul>
+        </section>
+
+        <section class="card list">
+          <div class="list__head">
+            <h3>❌ Gelmeyenler</h3>
+            <span id="countOut" class="badge">0</span>
+          </div>
+          <ul id="listOut"></ul>
+        </section>
+      </section>
+
+      <section id="teamsCard" class="card teams hidden">
+        <div class="list__head">
+          <h3>⚽ Takımlar (14 kişi)</h3>
+          <span id="teamsMeta" class="pill">—</span>
+        </div>
+
+        <div class="two teams__grid">
+          <div>
+            <h4 class="teamA">🔵 Takım A</h4>
+            <ol id="teamA"></ol>
+          </div>
+          <div>
+            <h4 class="teamB">🔴 Takım B</h4>
+            <ol id="teamB"></ol>
+          </div>
+        </div>
+
+        <div class="row">
+          <button id="btnRegen" class="ghost">Takımları yeniden kar</button>
+        </div>
+        <div class="mini muted">Not: Denge “mevki” bazlı basit bir algoritma ile yapılır.</div>
+      </section>
+
+      <section class="card admin">
+        <details>
+          <summary>⚙️ Maçı ayarla (gruptan bir kişi yapabilir)</summary>
+          <div class="grid">
+            <label><span>Başlık</span><input id="adminTitle" type="text" placeholder="Cuma Halısaha" /></label>
+            <label><span>Saha</span><input id="adminWhere" type="text" placeholder="X Halısaha / Y Saha" /></label>
+            <label><span>Tarih-Saat</span><input id="adminWhen" type="datetime-local" /></label>
+          </div>
+          <div class="row">
+            <button id="btnSaveMatch" class="secondary">Kaydet</button>
+            <button id="btnCopyLink" class="ghost">Linki kopyala</button>
+          </div>
+          <div class="mini muted">Kaydedince yeni bir maç oluşturur ve linki gruba atarsın.</div>
+          <div id="adminMsg" class="msg"></div>
+        </details>
+      </section>
+    </section>
+  </main>
+
+  <footer class="foot muted">
+    <span>📲 iPhone: Safari → Paylaş → “Ana Ekrana Ekle”</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
