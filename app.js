@@ -11,12 +11,12 @@ import {
 
 // ✅ Firebase Console → Project settings → Your apps → Web app
 const firebaseConfig = {
-  apiKey: "AIzaSy...",
+  apiKey: "AIzaSyC0X8wbvjuB-QPV3zYDPY2o01tIW22a4FI",
   authDomain: "halisaha-9adee.firebaseapp.com",
   projectId: "halisaha-9adee",
-  storageBucket: "halisaha-9adee.appspot.com",
-  messagingSenderId: "9636...",
-  appId: "1:9636:web:...",
+  storageBucket: "halisaha-9adee.firebasestorage.com",
+  messagingSenderId: "963668632742",
+  appId: "1:963668632742:web:934ce9bcdef4a7215e4067",
   measurementId: "G-..."
 };
 
