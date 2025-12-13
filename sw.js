@@ -1,5 +1,5 @@
 // Minimal offline cache (PWA hissiyatı)
-const CACHE = "halisaha-v1";
+const CACHE = "halisaha-v4";
 const ASSETS = [
   "./",
   "./index.html",
