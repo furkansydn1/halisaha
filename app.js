@@ -213,7 +213,7 @@ function renderLists(items){
 
 async function maybeGenerateTeams(matchRef, ins){
   // only when exactly 14 "in"
-  if(ins.length !== 14) return;
+  if (ins.length < 1) return;
 
   // read current teams
   const snap = await getDoc(matchRef);
