@@ -8,6 +8,15 @@ import {
   getFirestore, doc, setDoc, getDoc, collection, addDoc, onSnapshot,
   serverTimestamp, query, orderBy, updateDoc
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+
+
 
 // ✅ Firebase Console → Project settings → Your apps → Web app
 const firebaseConfig = {
@@ -25,7 +34,42 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+
 const $ = (id) => document.getElementById(id);
+
+function showMatchTab(){
+  hide($("viewProfile"));
+  $("tabMatch")?.classList.add("active");
+  $("tabProfile")?.classList.remove("active");
+}
+
+// ---- AUTH STATE LISTENER ----
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    // login oldu
+    hide(viewLogin);
+    show(viewMatch);
+
+    // default: maç sekmesi açık gelsin
+    showMatchTab();
+  } else {
+    // logout
+    hide(viewMatch);
+    show(viewLogin);
+  }
+});
+
+
+function showProfileTab(){
+  show($("viewProfile"));
+  $("tabProfile")?.classList.add("active");
+  $("tabMatch")?.classList.remove("active");
+}
+
+$("tabMatch")?.addEventListener("click", showMatchTab);
+$("tabProfile")?.addEventListener("click", showProfileTab);
+
+
 
 // views
 const viewLogin = $("viewLogin");
