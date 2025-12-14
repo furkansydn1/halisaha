@@ -43,23 +43,6 @@ function showMatchTab(){
   $("tabProfile")?.classList.remove("active");
 }
 
-// ---- AUTH STATE LISTENER ----
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    // login oldu
-    hide(viewLogin);
-    show(viewMatch);
-
-    // default: maç sekmesi açık gelsin
-    showMatchTab();
-  } else {
-    // logout
-    hide(viewMatch);
-    show(viewLogin);
-  }
-});
-
-
 function showProfileTab(){
   show($("viewProfile"));
   $("tabProfile")?.classList.add("active");
@@ -75,6 +58,23 @@ $("tabProfile")?.addEventListener("click", showProfileTab);
 const viewLogin = $("viewLogin");
 const viewMatch = $("viewMatch");
 const btnSignOut = $("btnSignOut");
+
+// ---- AUTH STATE LISTENER ----
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    // giriş yaptı
+    hide(viewLogin);
+    show(viewMatch);
+
+    // default: maç sekmesi açık gelsin
+    showMatchTab();
+  } else {
+    // çıkış yaptı
+    hide(viewMatch);
+    show(viewLogin);
+  }
+});
+
 
 // login inputs
 const email = $("email");
