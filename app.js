@@ -67,6 +67,18 @@ const viewLogin = $("viewLogin");
 const viewMatch = $("viewMatch");
 const btnSignOut = $("btnSignOut");
 
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    viewLogin?.classList.add("hidden");
+    viewMatch?.classList.remove("hidden");
+    showMatchTab?.();
+  } else {
+    viewMatch?.classList.add("hidden");
+    viewLogin?.classList.remove("hidden");
+  }
+});
+
+
 // login inputs
 const email = $("email");
 const password = $("password");
