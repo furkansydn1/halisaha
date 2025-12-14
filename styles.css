@@ -191,3 +191,4 @@ li{
 ol{margin:8px 0 0; padding-left:18px}
 ol li{margin-bottom:8px}
 .teams__grid{margin-top:10px}
+.hidden { display: none !important; }
