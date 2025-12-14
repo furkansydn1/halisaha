@@ -67,23 +67,6 @@ const viewLogin = $("viewLogin");
 const viewMatch = $("viewMatch");
 const btnSignOut = $("btnSignOut");
 
-// ---- AUTH STATE LISTENER ----
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    // giriş yaptı
-    hide(viewLogin);
-    show(viewMatch);
-
-    // default: maç sekmesi açık gelsin
-    showMatchTab();
-  } else {
-    // çıkış yaptı
-    hide(viewMatch);
-    show(viewLogin);
-  }
-});
-
-
 // login inputs
 const email = $("email");
 const password = $("password");
