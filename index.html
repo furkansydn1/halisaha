@@ -93,6 +93,66 @@
             <span id="countOut" class="badge">0</span>
           </div>
           <ul id="listOut"></ul>
+      <section id="viewProfile" class="card hidden">
+  <h2>👤 Kişisel Bilgiler</h2>
+  <p class="muted">Bunlar takım dengesi ve saha dizilişi için kullanılır.</p>
+
+  <div class="grid">
+    <label>
+      <span>Takma ad</span>
+      <input id="pName" type="text" placeholder="Furkan" />
+    </label>
+
+    <label>
+      <span>Mevki</span>
+      <select id="pPos1">
+        <option value="">Seç</option>
+        <option>Kaleci</option>
+        <option>Defans</option>
+        <option>Orta saha</option>
+        <option>Forvet</option>
+        <option>Kanat</option>
+        <option>Bek</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Alternatif mevki</span>
+      <select id="pPos2">
+        <option value="">Seç</option>
+        <option>Kaleci</option>
+        <option>Defans</option>
+        <option>Orta saha</option>
+        <option>Forvet</option>
+        <option>Kanat</option>
+        <option>Bek</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Ayak</span>
+      <select id="pFoot">
+        <option value="">Seç</option>
+        <option>Sağ</option>
+        <option>Sol</option>
+        <option>İki ayak</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Güç Puanı (1–10)</span>
+      <input id="pRating" type="range" min="1" max="10" value="5" />
+      <div class="mini muted">Seçilen: <span id="pRatingVal">5</span>/10</div>
+    </label>
+  </div>
+
+  <div class="row">
+    <button id="btnSaveProfile" class="secondary">Kaydet</button>
+  </div>
+
+  <div id="profileMsg" class="msg"></div>
+</section>
+
         </section>
       </section>
 
